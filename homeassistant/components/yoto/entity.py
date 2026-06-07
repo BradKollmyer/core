@@ -43,4 +43,8 @@ class YotoEntity(CoordinatorEntity[YotoDataUpdateCoordinator]):
     @property
     def available(self) -> bool:
         """Return if the entity is available."""
-        return super().available and self._player_id in self.coordinator.data
+        return (
+            super().available
+            and self._player_id in self.coordinator.data
+            and bool(self.player.is_online)
+        )

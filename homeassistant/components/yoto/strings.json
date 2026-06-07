@@ -30,6 +30,41 @@
       }
     }
   },
+  "entity": {
+    "sensor": {
+      "card_insertion_state": {
+        "name": "Card slot",
+        "state": {
+          "none": "Empty",
+          "physical": "Physical card",
+          "remote": "Remote",
+          "streaming": "Streaming"
+        }
+      },
+      "day_mode": {
+        "name": "Day mode",
+        "state": {
+          "day": "Day",
+          "night": "Night"
+        }
+      },
+      "power_source": {
+        "name": "Power source",
+        "state": {
+          "battery": "Battery",
+          "qi_dock": "Wireless dock",
+          "usb_c": "USB-C",
+          "v2_dock": "Dock"
+        }
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "wifi_rssi": {
+        "name": "Wi-Fi RSSI"
+      }
+    }
+  },
   "exceptions": {
     "card_detail_failed": {
       "message": "Could not load Yoto card details: {error}"

@@ -9,12 +9,17 @@ import jwt
 import pytest
 from yoto_api import (
     Card,
+    CardInsertionState,
     Chapter,
+    DayMode,
     Device,
     Group,
     PlaybackEvent,
     PlaybackStatus,
+    PlayerExtendedStatus,
     PlayerInfo,
+    PlayerStatus,
+    PowerSource,
     Track,
     YotoPlayer,
 )
@@ -87,6 +92,16 @@ def _build_player() -> YotoPlayer:
     player.info = PlayerInfo(
         firmware_version="v2.17.5",
         mac="aa:bb:cc:dd:ee:ff",
+    )
+    player.status = PlayerStatus(
+        battery_level_percentage=75,
+        card_insertion_state=CardInsertionState.PHYSICAL,
+        day_mode=DayMode.DAY,
+    )
+    player.extended_status = PlayerExtendedStatus(
+        power_source=PowerSource.USB_C,
+        network_ssid="HomeNet",
+        wifi_strength=-55,
     )
     player.last_event = PlaybackEvent(
         player_id=PLAYER_ID,
