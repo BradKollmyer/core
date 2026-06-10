@@ -26,6 +26,16 @@ async def test_device(
     assert await hass.config_entries.async_setup(config_entry.entry_id)
     await hass.async_block_till_done()
 
+    consumption_calls = [
+        call
+        for call in aioclient_mock.mock_calls
+        if call[1].path == "/api/v2/water/consumption"
+    ]
+    assert {call[1].query["macAddress"] for call in consumption_calls} == {
+        "111111111111",
+        "1a2b3c4d5e6f",
+    }
+
     call_count = aioclient_mock.call_count
 
     freezer.tick(timedelta(seconds=90))
